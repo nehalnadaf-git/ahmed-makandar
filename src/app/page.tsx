@@ -16,7 +16,12 @@ function App() {
   const lenisRef = useLenis();
 
   const handleGoToTop = useCallback(() => {
-    lenisRef.current?.scrollTo(0, { duration: 1.5 });
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { duration: 1.5 });
+    } else {
+      // Fallback for mobile/touch devices where Lenis is not initialized
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }, [lenisRef]);
 
   return (
