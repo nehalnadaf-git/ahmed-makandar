@@ -338,7 +338,7 @@ function IDCardBadge({
           <div className={`text-center ${mobile ? 'py-4 px-3' : 'py-5 px-4'}`} style={{ backgroundColor: '#FDFBF7', borderTop: '1px solid rgba(0,0,0,0.04)' }}>
             <div style={{ padding: mobile ? '12px 16px 10px' : '16px 20px 14px' }}>
               <h1 className={`${mobile ? 'text-4xl' : 'text-5xl'} font-bold mb-1`} style={{ color: '#0E8B7D', fontFamily: "'Kalam', cursive", lineHeight: 1.1 }}>Arham</h1>
-              <p className={`${mobile ? 'text-[10px] tracking-[2px]' : 'text-xs tracking-[3px]'} uppercase font-semibold`} style={{ color: '#6B6560' }}>B. Pharm Student</p>
+              <p className={`${mobile ? 'text-[10px] tracking-[2px]' : 'text-xs tracking-[3px]'} uppercase font-semibold`} style={{ color: '#6B6560' }}>B.Pharm</p>
             </div>
           </div>
 
