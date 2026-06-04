@@ -345,7 +345,7 @@ function IDCardBadge({
           {!mobile && (
             <div className="flex justify-center pb-5" style={{ backgroundColor: '#FDFBF7' }}>
               <a
-                href="https://www.linkedin.com/in/arham-hussain-936054259"
+                href="https://drive.google.com/file/d/1qjujK3cI2dyhuFEdDUx90h0V5GeATS53/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border-2 text-xs uppercase tracking-wider font-semibold transition-all duration-200"
@@ -519,7 +519,7 @@ export default function HeroSection() {
           </div>
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-[20]">
             <a
-              href="https://www.linkedin.com/in/arham-hussain-936054259"
+              href="https://drive.google.com/file/d/1qjujK3cI2dyhuFEdDUx90h0V5GeATS53/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2 rounded-lg border-2 text-[10px] uppercase tracking-wider font-semibold transition-all duration-200"
