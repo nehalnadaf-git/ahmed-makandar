@@ -93,6 +93,98 @@ function computeLayout(n: number) {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
+ *  TABLETS / CAPSULES DRAWING HELPER
+ * ═══════════════════════════════════════════════════════════════════ */
+
+function renderTablets(index: number, id: string) {
+  if (index === 0) {
+    // Rosuvastatin: pink round and oval tablets
+    const pinkPills = [
+      { type: 'round', cx: 65, cy: 288, r: 13, deg: 12 },
+      { type: 'round', cx: 92, cy: 292, r: 13, deg: -45 },
+      { type: 'oval', cx: 145, cy: 291, rx: 18, ry: 10, deg: 8 },
+      { type: 'round', cx: 182, cy: 286, r: 12, deg: 70 },
+      { type: 'round', cx: 118, cy: 282, r: 13, deg: 35 },
+      { type: 'round', cx: 162, cy: 285, r: 12, deg: -20 },
+    ];
+    return (
+      <g>
+        {pinkPills.map((pill, i) => {
+          if (pill.type === 'round') {
+            return (
+              <g key={i} transform={`translate(${pill.cx}, ${pill.cy}) rotate(${pill.deg})`} filter={`url(#tablet-shadow-${id})`}>
+                <circle cx="0" cy="0" r={pill.r} fill={`url(#pink-pill-grad-${id})`} />
+                <circle cx="0.5" cy="0.5" r={pill.r! - 2} fill={`url(#pink-pill-face-${id})`} />
+                <line x1={-pill.r! + 3} y1="0" x2={pill.r! - 3} y2="0" stroke="#b32d4a" strokeWidth="0.8" opacity="0.6" />
+                <line x1={-pill.r! + 3} y1="0.6" x2={pill.r! - 3} y2="0.6" stroke="#ffffff" strokeWidth="0.5" opacity="0.8" />
+              </g>
+            );
+          } else {
+            return (
+              <g key={i} transform={`translate(${pill.cx}, ${pill.cy}) rotate(${pill.deg})`} filter={`url(#tablet-shadow-${id})`}>
+                <ellipse cx="0" cy="0" rx={pill.rx} ry={pill.ry} fill={`url(#pink-pill-grad-${id})`} />
+                <ellipse cx="0.5" cy="0.5" rx={pill.rx! - 2.5} ry={pill.ry! - 1.8} fill={`url(#pink-pill-face-${id})`} />
+                <line x1="0" y1={-pill.ry! + 2} x2="0" y2={pill.ry! - 2} stroke="#b32d4a" strokeWidth="0.8" opacity="0.6" />
+                <line x1="0.6" y1={-pill.ry! + 2} x2="0.6" y2={pill.ry! - 2} stroke="#ffffff" strokeWidth="0.5" opacity="0.8" />
+              </g>
+            );
+          }
+        })}
+      </g>
+    );
+  }
+
+  if (index === 1) {
+    // Levosulpiride: white round tablets
+    const whitePills = [
+      { cx: 60, cy: 288, r: 13, deg: -10 },
+      { cx: 88, cy: 291, r: 13, deg: 40 },
+      { cx: 115, cy: 284, r: 14, deg: -25 },
+      { cx: 145, cy: 290, r: 13, deg: 15 },
+      { cx: 178, cy: 287, r: 13, deg: -60 },
+      { cx: 130, cy: 278, r: 13, deg: 5 },
+    ];
+    return (
+      <g>
+        {whitePills.map((pill, i) => (
+          <g key={i} transform={`translate(${pill.cx}, ${pill.cy}) rotate(${pill.deg})`} filter={`url(#tablet-shadow-${id})`}>
+            <circle cx="0" cy="0" r={pill.r} fill={`url(#white-pill-grad-${id})`} />
+            <circle cx="0.5" cy="0.5" r={pill.r - 2} fill={`url(#white-pill-face-${id})`} />
+            <line x1={-pill.r + 3} y1="0" x2={pill.r - 3} y2="0" stroke="#71717a" strokeWidth="0.8" opacity="0.5" />
+            <line x1={-pill.r + 3} y1="0.6" x2={pill.r - 3} y2="0.6" stroke="#ffffff" strokeWidth="0.6" opacity="0.9" />
+          </g>
+        ))}
+      </g>
+    );
+  }
+
+  if (index === 2) {
+    // Herbal Drug Study: green/yellow capsules
+    const capsules = [
+      { cx: 70, cy: 288, deg: -15 },
+      { cx: 105, cy: 292, deg: 8 },
+      { cx: 142, cy: 289, deg: -30 },
+      { cx: 176, cy: 285, deg: 25 },
+      { cx: 122, cy: 280, deg: 55 },
+    ];
+    return (
+      <g>
+        {capsules.map((cap, i) => (
+          <g key={i} transform={`translate(${cap.cx}, ${cap.cy}) rotate(${cap.deg})`} filter={`url(#tablet-shadow-${id})`}>
+            <path d="M 0,-7 L 10,-7 A 7,7 0 0,1 17,0 A 7,7 0 0,1 10,7 L 0,7 Z" fill={`url(#cap-yellow-${id})`} />
+            <path d="M 1,-7 L -10,-7 A 7,7 0 0,0 -17,0 A 7,7 0 0,0 -10,7 L 1,7 Z" fill={`url(#cap-green-${id})`} />
+            <line x1="1" y1="-7" x2="1" y2="7" stroke="#081c15" strokeWidth="0.8" opacity="0.4" />
+            <path d="M -11,-4 L 11,-4" fill="none" stroke="#ffffff" strokeWidth="1.3" strokeLinecap="round" opacity="0.55" />
+          </g>
+        ))}
+      </g>
+    );
+  }
+
+  return null;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
  *  REALISTIC PLASTIC ZIP-LOCK BAG — pure SVG
  *  The viewBox is ALWAYS 240×310 (design-locked).
  *  It scales to whatever pixel size the container gives it.
@@ -185,6 +277,45 @@ function PlasticBag({
           <feDropShadow dx="0" dy="2.5" stdDeviation="3" floodColor="#2A2522" floodOpacity="0.14" />
           <feDropShadow dx="0" dy="0.8" stdDeviation="1" floodColor="#2A2522" floodOpacity="0.08" />
         </filter>
+
+        {/* ── tablet drop shadow ── */}
+        <filter id={`tablet-shadow-${id}`} x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="1" dy="3.5" stdDeviation="2.5" floodColor="#1F1A17" floodOpacity="0.22" />
+        </filter>
+
+        {/* ── tablet gradients ── */}
+        <radialGradient id={`pink-pill-grad-${id}`} cx="30%" cy="30%" r="70%">
+          <stop offset="0%" stopColor="#ffccd5" />
+          <stop offset="70%" stopColor="#ff758f" />
+          <stop offset="100%" stopColor="#c9184a" />
+        </radialGradient>
+        <radialGradient id={`pink-pill-face-${id}`} cx="35%" cy="35%" r="65%">
+          <stop offset="0%" stopColor="#ffccd5" />
+          <stop offset="80%" stopColor="#ff8da1" />
+          <stop offset="100%" stopColor="#ff4d6d" />
+        </radialGradient>
+
+        <radialGradient id={`white-pill-grad-${id}`} cx="30%" cy="30%" r="70%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="75%" stopColor="#e4e4e7" />
+          <stop offset="100%" stopColor="#a1a1aa" />
+        </radialGradient>
+        <radialGradient id={`white-pill-face-${id}`} cx="35%" cy="35%" r="65%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="80%" stopColor="#f4f4f5" />
+          <stop offset="100%" stopColor="#d4d4d8" />
+        </radialGradient>
+
+        <linearGradient id={`cap-green-${id}`} x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#40916c" />
+          <stop offset="40%" stopColor="#1b4332" />
+          <stop offset="100%" stopColor="#081c15" />
+        </linearGradient>
+        <linearGradient id={`cap-yellow-${id}`} x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#ffe3a8" />
+          <stop offset="45%" stopColor="#ffb703" />
+          <stop offset="100%" stopColor="#fb8500" />
+        </linearGradient>
       </defs>
 
       {/* ── bag shadow ── */}
@@ -192,6 +323,11 @@ function PlasticBag({
 
       {/* ── transparent body ── */}
       <path d={bagPath} fill={`url(#bg-${id})`} />
+
+      {/* ── realistic pills/tablets inside the bag ── */}
+      <g clipPath={`url(#clip-${id})`}>
+        {renderTablets(index, id)}
+      </g>
 
       {/* ── crinkle wrinkle lines ── */}
       <g clipPath={`url(#clip-${id})`} opacity="0.4">
