@@ -261,7 +261,7 @@ function StickyNote({
           <Lightbulb className={`${mobile ? 'w-3 h-3' : 'w-3.5 h-3.5'}`} style={{ color: '#0E8B7D' }} />
         </div>
         <p className={`${mobile ? 'text-xl' : 'text-2xl'} font-bold mb-0.5`} style={{ color: '#0E8B7D', fontFamily: "'Caveat', cursive" }}>Pharma</p>
-        <p className={`${mobile ? 'text-[9px]' : 'text-xs'} leading-relaxed`} style={{ color: '#6B6560' }}>QA Intern · Shilpa Biologicals<br/>GMP &amp; R&amp;D · 2025</p>
+        <p className={`${mobile ? 'text-[9px]' : 'text-xs'} leading-relaxed`} style={{ color: '#6B6560' }}>QA Intern · Shilpa Biologicals<br />GMP &amp; R&amp;D · 2025</p>
       </div>
     </div>
   );
@@ -433,20 +433,20 @@ export default function HeroSection() {
         // ── Phase 3: Damped pendulum — smooth and elegant ──
         // Each swing decays naturally, rotation + y shift only
         // Subtle rotationX adds 3D depth per swing
-        tl.to(badge, { rotation: -14,  y: 10, rotationX: -1.5, duration: 0.46, ease: 'sine.inOut' }, '-=0.06');
-        tl.to(badge, { rotation:  9,   y:  7, rotationX:  1,   duration: 0.44, ease: 'sine.inOut' });
-        tl.to(badge, { rotation: -5.5, y:  4, rotationX: -0.6, duration: 0.40, ease: 'sine.inOut' });
-        tl.to(badge, { rotation:  3,   y:  2, rotationX:  0.3, duration: 0.36, ease: 'sine.inOut' });
-        tl.to(badge, { rotation: -1.5, y:  1, rotationX: -0.1, duration: 0.32, ease: 'sine.inOut' });
-        tl.to(badge, { rotation:  0.5, y:0.3, rotationX:  0,   duration: 0.28, ease: 'sine.inOut' });
-        tl.to(badge, { rotation:  0,   y:  0,                  duration: 0.40, ease: 'power2.out' });
+        tl.to(badge, { rotation: -14, y: 10, rotationX: -1.5, duration: 0.46, ease: 'sine.inOut' }, '-=0.06');
+        tl.to(badge, { rotation: 9, y: 7, rotationX: 1, duration: 0.44, ease: 'sine.inOut' });
+        tl.to(badge, { rotation: -5.5, y: 4, rotationX: -0.6, duration: 0.40, ease: 'sine.inOut' });
+        tl.to(badge, { rotation: 3, y: 2, rotationX: 0.3, duration: 0.36, ease: 'sine.inOut' });
+        tl.to(badge, { rotation: -1.5, y: 1, rotationX: -0.1, duration: 0.32, ease: 'sine.inOut' });
+        tl.to(badge, { rotation: 0.5, y: 0.3, rotationX: 0, duration: 0.28, ease: 'sine.inOut' });
+        tl.to(badge, { rotation: 0, y: 0, duration: 0.40, ease: 'power2.out' });
 
         // ── Phase 4: Organic idle breathing ──
         // 4 incommensurate sine waves — never repeats the same pattern
         const idleAt = 4.0;
-        gsap.to(badge, { rotation:  3.5, duration: 4.4, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: idleAt });
-        gsap.to(badge, { y: 14,          duration: 5.0, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: idleAt + 0.4 });
-        gsap.to(badge, { rotationX: 2,   duration: 5.9, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: idleAt + 1.0 });
+        gsap.to(badge, { rotation: 3.5, duration: 4.4, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: idleAt });
+        gsap.to(badge, { y: 14, duration: 5.0, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: idleAt + 0.4 });
+        gsap.to(badge, { rotationX: 2, duration: 5.9, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: idleAt + 1.0 });
         gsap.to(badge, { rotationY: 1.5, duration: 7.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: idleAt + 1.6 });
       });
 
