@@ -8,43 +8,53 @@ gsap.registerPlugin(ScrollTrigger);
 
 const logos = [
   {
-    name: 'B. Pharm',
+    name: 'Solar O&M',
     svg: (
-      <svg width="120" height="44" viewBox="0 0 120 44">
-        <rect x="4" y="15" width="22" height="14" rx="7" fill="#2E86AB" />
-        <rect x="15" y="15" width="11" height="14" fill="#1A6E8A" />
-        <line x1="15" y1="15" x2="15" y2="29" stroke="#F0EBE3" strokeWidth="1.5" />
-        <text x="34" y="28" fill="#2A2522" fontSize="14" fontWeight="700" fontFamily="Inter, sans-serif">B. Pharm</text>
+      <svg width="130" height="44" viewBox="0 0 130 44">
+        <circle cx="17" cy="22" r="8" fill="#F18F01" />
+        <line x1="17" y1="7" x2="17" y2="4" stroke="#F18F01" strokeWidth="2" strokeLinecap="round" />
+        <line x1="17" y1="37" x2="17" y2="40" stroke="#F18F01" strokeWidth="2" strokeLinecap="round" />
+        <line x1="2" y1="22" x2="5" y2="22" stroke="#F18F01" strokeWidth="2" strokeLinecap="round" />
+        <line x1="29" y1="22" x2="32" y2="22" stroke="#F18F01" strokeWidth="2" strokeLinecap="round" />
+        <line x1="6" y1="11" x2="8" y2="13" stroke="#F18F01" strokeWidth="2" strokeLinecap="round" />
+        <line x1="26" y1="31" x2="28" y2="33" stroke="#F18F01" strokeWidth="2" strokeLinecap="round" />
+        <line x1="28" y1="11" x2="26" y2="13" stroke="#F18F01" strokeWidth="2" strokeLinecap="round" />
+        <line x1="8" y1="31" x2="6" y2="33" stroke="#F18F01" strokeWidth="2" strokeLinecap="round" />
+        <text x="40" y="28" fill="#2A2522" fontSize="14" fontWeight="700" fontFamily="Inter, sans-serif">Solar O&M</text>
       </svg>
     ),
   },
   {
-    name: 'UV Spectroscopy',
+    name: 'SCADA Monitoring',
     svg: (
-      <svg width="192" height="44" viewBox="0 0 192 44">
-        <path d="M4 22 Q8 11 13 22 Q18 33 23 22 Q28 11 33 22" stroke="#A23B72" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-        <text x="42" y="28" fill="#2A2522" fontSize="14" fontWeight="700" fontFamily="Inter, sans-serif">UV Spectroscopy</text>
+      <svg width="215" height="44" viewBox="0 0 215 44">
+        <rect x="4" y="10" width="24" height="18" rx="2" fill="#2E86AB" />
+        <rect x="6" y="12" width="20" height="14" rx="1" fill="#1A6E8A" />
+        <path d="M8 22 L12 17 L16 20 L20 15 L24 18" stroke="#7DD3FC" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+        <text x="34" y="28" fill="#2A2522" fontSize="12" fontWeight="700" fontFamily="Inter, sans-serif">SCADA Monitoring</text>
       </svg>
     ),
   },
   {
-    name: 'HPLC',
+    name: 'SAP S4/HANA',
     svg: (
-      <svg width="100" height="44" viewBox="0 0 100 44">
-        <rect x="8" y="4" width="12" height="7" rx="2" fill="#F18F01" />
-        <rect x="11" y="11" width="6" height="22" rx="2" fill="#F18F01" />
-        <rect x="8" y="33" width="12" height="4" rx="1.5" fill="#D4780A" />
-        <text x="28" y="28" fill="#2A2522" fontSize="17" fontWeight="700" fontFamily="Inter, sans-serif">HPLC</text>
+      <svg width="155" height="44" viewBox="0 0 155 44">
+        <rect x="4" y="8" width="26" height="28" rx="3" fill="#0070B1" />
+        <text x="6" y="19" fill="white" fontSize="7" fontWeight="800" fontFamily="Inter, sans-serif">SAP</text>
+        <rect x="8" y="22" width="18" height="2" rx="1" fill="rgba(255,255,255,0.5)" />
+        <rect x="8" y="26" width="14" height="2" rx="1" fill="rgba(255,255,255,0.3)" />
+        <text x="38" y="28" fill="#2A2522" fontSize="14" fontWeight="700" fontFamily="Inter, sans-serif">SAP S4/HANA</text>
       </svg>
     ),
   },
   {
-    name: 'GMP',
+    name: 'HV Switchgear',
     svg: (
-      <svg width="108" height="44" viewBox="0 0 108 44">
-        <path d="M17 4 L29 8 V19 C29 27 17 35 17 35 C17 35 5 27 5 19 V8 Z" fill="#2D936C" />
-        <path d="M11 19 L15 23 L23 15" stroke="white" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        <text x="36" y="28" fill="#2A2522" fontSize="17" fontWeight="700" fontFamily="Inter, sans-serif">GMP</text>
+      <svg width="170" height="44" viewBox="0 0 170 44">
+        <rect x="4" y="8" width="26" height="28" rx="2" fill="#4A5568" />
+        <circle cx="17" cy="18" r="5" stroke="#F6E05E" strokeWidth="2" fill="none" />
+        <line x1="17" y1="23" x2="17" y2="30" stroke="#F6E05E" strokeWidth="2" strokeLinecap="round" />
+        <text x="38" y="28" fill="#2A2522" fontSize="13" fontWeight="700" fontFamily="Inter, sans-serif">HV Switchgear</text>
       </svg>
     ),
   },
@@ -61,44 +71,42 @@ const logos = [
     ),
   },
   {
-    name: 'Pharmacovigilance',
+    name: 'Renewable Energy',
     svg: (
-      <svg width="222" height="44" viewBox="0 0 222 44">
-        <rect x="4" y="16" width="26" height="12" rx="3" fill="#0E8B7D" />
-        <rect x="10" y="8" width="12" height="28" rx="3" fill="#0E8B7D" />
-        <text x="38" y="28" fill="#2A2522" fontSize="12" fontWeight="700" fontFamily="Inter, sans-serif">Pharmacovigilance</text>
+      <svg width="215" height="44" viewBox="0 0 215 44">
+        <path d="M17 8 C10 8 5 13 5 20 C5 27 10 32 17 32 C24 32 29 27 29 20 L17 20 Z" fill="#48BB78" />
+        <path d="M17 8 L17 20 L28 14 Z" fill="#2F855A" />
+        <text x="38" y="28" fill="#2A2522" fontSize="12" fontWeight="700" fontFamily="Inter, sans-serif">Renewable Energy</text>
       </svg>
     ),
   },
   {
-    name: 'Lab Techniques',
+    name: 'Electrical Testing',
     svg: (
-      <svg width="175" height="44" viewBox="0 0 175 44">
-        <path d="M14 7 L14 19 L5 34 C5 36 8 38 17 38 C26 38 29 36 29 34 L20 19 L20 7 Z" fill="#5C4E8B" opacity="0.18" />
-        <path d="M14 7 L14 19 L5 34 C5 36 8 38 17 38 C26 38 29 36 29 34 L20 19 L20 7" stroke="#5C4E8B" strokeWidth="2" fill="none" strokeLinejoin="round" />
-        <line x1="11" y1="7" x2="23" y2="7" stroke="#5C4E8B" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="10" cy="30" r="2.2" fill="#5C4E8B" />
-        <circle cx="17" cy="34" r="1.6" fill="#5C4E8B" />
-        <text x="36" y="28" fill="#2A2522" fontSize="14" fontWeight="700" fontFamily="Inter, sans-serif">Lab Techniques</text>
+      <svg width="200" height="44" viewBox="0 0 200 44">
+        <path d="M17 6 L21 18 L15 18 L19 38 L11 20 L17 20 Z" fill="#E53E3E" />
+        <text x="36" y="28" fill="#2A2522" fontSize="13" fontWeight="700" fontFamily="Inter, sans-serif">Electrical Testing</text>
       </svg>
     ),
   },
   {
-    name: 'QA & R&D',
+    name: 'HSE Compliance',
     svg: (
-      <svg width="132" height="44" viewBox="0 0 132 44">
-        <circle cx="14" cy="17" r="10" stroke="#217346" strokeWidth="2.5" fill="none" />
-        <line x1="21" y1="24" x2="30" y2="33" stroke="#217346" strokeWidth="2.5" strokeLinecap="round" />
-        <text x="37" y="28" fill="#2A2522" fontSize="13" fontWeight="700" fontFamily="Inter, sans-serif">QA &amp; R&amp;D</text>
+      <svg width="190" height="44" viewBox="0 0 190 44">
+        <path d="M17 4 L29 8 V19 C29 27 17 35 17 35 C17 35 5 27 5 19 V8 Z" fill="#D69E2E" />
+        <path d="M11 19 L15 23 L23 15" stroke="white" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="36" y="28" fill="#2A2522" fontSize="13" fontWeight="700" fontFamily="Inter, sans-serif">HSE Compliance</text>
       </svg>
     ),
   },
   {
-    name: 'Drug Safety',
+    name: 'EL / IR Testing',
     svg: (
-      <svg width="148" height="44" viewBox="0 0 148 44">
-        <path d="M4 22 L9 22 L13 13 L17 31 L21 17 L25 22 L30 22" stroke="#E74C3C" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        <text x="38" y="28" fill="#2A2522" fontSize="14" fontWeight="700" fontFamily="Inter, sans-serif">Drug Safety</text>
+      <svg width="180" height="44" viewBox="0 0 180 44">
+        <rect x="5" y="12" width="24" height="18" rx="2" fill="#553C9A" />
+        <rect x="9" y="16" width="16" height="10" rx="1" fill="#B794F4" opacity="0.5" />
+        <circle cx="17" cy="21" r="3" fill="#E9D8FD" />
+        <text x="36" y="28" fill="#2A2522" fontSize="14" fontWeight="700" fontFamily="Inter, sans-serif">EL / IR Testing</text>
       </svg>
     ),
   },

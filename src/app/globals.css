@@ -3,20 +3,20 @@
 @theme {
   --color-bg-cream: #F0EBE3;
   --color-bg-cream-light: #F5F0E8;
-  --color-bg-dark: #1E2B28;
-  --color-bg-dark-card: #2A3B36;
-  --color-accent-teal: #0E8B7D;
-  --color-accent-teal-hover: #0C7A6E;
-  --color-accent-teal-light: #6BBFB3;
+  --color-bg-dark: #2B1E0E;
+  --color-bg-dark-card: #3B2A14;
+  --color-accent-teal: #D97706;
+  --color-accent-teal-hover: #B45309;
+  --color-accent-teal-light: #FCD34D;
   --color-text-primary: #2A2522;
   --color-text-secondary: #6B6560;
-  --color-text-on-dark: #F5F0E8;
+  --color-text-on-dark: #FDF8F0;
   --color-text-on-dark-muted: #A09A94;
   --color-id-card-gray: #9A9590;
   --color-folder-blue: #5BBCFF;
-  --color-stamp-green: #4A7C6F;
-  --color-note-mint: #D8F0E8;
-  --color-note-green: #E0F0E0;
+  --color-stamp-green: #92400E;
+  --color-note-mint: #FEF3C7;
+  --color-note-green: #FDE68A;
   --color-note-blue: #D8EBF5;
   --color-note-yellow: #F0F0D0;
   --color-dot-grid: #D5D0C8;
@@ -139,7 +139,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #0E8B7D;
+  background-color: #D97706;
   transition: width 200ms ease;
 }
 
@@ -168,9 +168,9 @@
   content: '';
   position: absolute;
   inset: -4px;
-  background: #4A7C6F;
+  background: #92400E;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cpath d='M0 10 L5 0 L10 10 L15 0 L20 10 L15 20 L10 10 L5 20 Z' fill='black'/%3E%3C/svg%3E") 0 0 / 10px 10px;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cpath d='M0 10 L5 0 L10 10 L15 0 L20 10 L15 20 L10 10 L5 20 Z' fill='black'/%3E%3C/svg%3E") 0 0 / 10px 10px;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cpath d='M0 10 L5 0 L10 10 L15 0 L20 10 L5 20 Z' fill='black'/%3E%3C/svg%3E") 0 0 / 10px 10px;
   z-index: -1;
 }
 
@@ -201,11 +201,11 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #B5CFC8;
+  background: #F6D28B;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8AB5AC;
+  background: #D97706;
 }
 

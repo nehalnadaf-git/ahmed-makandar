@@ -13,16 +13,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
-    name: 'Rosuvastatin UV/HPLC',
-    link: 'https://www.linkedin.com/in/arham-hussain-936054259',
+    name: '400 MW SCADA O&M',
+    link: 'https://www.linkedin.com/in/ahmed-rehan-makandar-343106291/',
   },
   {
-    name: 'Levosulpiride RP-HPLC',
-    link: 'https://www.linkedin.com/in/arham-hussain-936054259',
+    name: 'SAP MM Operations',
+    link: 'https://www.linkedin.com/in/ahmed-rehan-makandar-343106291/',
   },
   {
-    name: 'Herbal Drug Study',
-    link: '',
+    name: '100 MW Anantapur Plant',
+    link: 'https://www.linkedin.com/in/ahmed-rehan-makandar-343106291/',
   },
 ];
 
@@ -96,87 +96,127 @@ function computeLayout(n: number) {
  *  TABLETS / CAPSULES DRAWING HELPER
  * ═══════════════════════════════════════════════════════════════════ */
 
-function renderTablets(index: number, id: string) {
+function renderTelemetryGraphic(index: number, id: string) {
   if (index === 0) {
-    // Rosuvastatin: pink round and oval tablets
-    const pinkPills = [
-      { type: 'round', cx: 65, cy: 288, r: 13, deg: 12 },
-      { type: 'round', cx: 92, cy: 292, r: 13, deg: -45 },
-      { type: 'oval', cx: 145, cy: 291, rx: 18, ry: 10, deg: 8 },
-      { type: 'round', cx: 182, cy: 286, r: 12, deg: 70 },
-      { type: 'round', cx: 118, cy: 282, r: 13, deg: 35 },
-      { type: 'round', cx: 162, cy: 285, r: 12, deg: -20 },
-    ];
     return (
       <g>
-        {pinkPills.map((pill, i) => {
-          if (pill.type === 'round') {
-            return (
-              <g key={i} transform={`translate(${pill.cx}, ${pill.cy}) rotate(${pill.deg})`} filter={`url(#tablet-shadow-${id})`}>
-                <circle cx="0" cy="0" r={pill.r} fill={`url(#pink-pill-grad-${id})`} />
-                <circle cx="0.5" cy="0.5" r={pill.r! - 2} fill={`url(#pink-pill-face-${id})`} />
-                <line x1={-pill.r! + 3} y1="0" x2={pill.r! - 3} y2="0" stroke="#b32d4a" strokeWidth="0.8" opacity="0.6" />
-                <line x1={-pill.r! + 3} y1="0.6" x2={pill.r! - 3} y2="0.6" stroke="#ffffff" strokeWidth="0.5" opacity="0.8" />
-              </g>
-            );
-          } else {
-            return (
-              <g key={i} transform={`translate(${pill.cx}, ${pill.cy}) rotate(${pill.deg})`} filter={`url(#tablet-shadow-${id})`}>
-                <ellipse cx="0" cy="0" rx={pill.rx} ry={pill.ry} fill={`url(#pink-pill-grad-${id})`} />
-                <ellipse cx="0.5" cy="0.5" rx={pill.rx! - 2.5} ry={pill.ry! - 1.8} fill={`url(#pink-pill-face-${id})`} />
-                <line x1="0" y1={-pill.ry! + 2} x2="0" y2={pill.ry! - 2} stroke="#b32d4a" strokeWidth="0.8" opacity="0.6" />
-                <line x1="0.6" y1={-pill.ry! + 2} x2="0.6" y2={pill.ry! - 2} stroke="#ffffff" strokeWidth="0.5" opacity="0.8" />
-              </g>
-            );
-          }
-        })}
+        {/* Waveforms */}
+        <path
+          d="M 20 90 Q 60 50, 100 110 T 180 80 T 220 100"
+          fill="none"
+          stroke="#D97706"
+          strokeWidth="2"
+          strokeOpacity="0.95"
+        />
+        <path
+          d="M 20 100 Q 60 70, 100 120 T 180 95 T 220 110"
+          fill="none"
+          stroke="#10B981"
+          strokeWidth="1.2"
+          strokeOpacity="0.65"
+        />
+        
+        {/* Glowing peak node */}
+        <circle cx="140" cy="95" r="4" fill="#D97706" />
+        <circle cx="140" cy="95" r="8" fill="none" stroke="#D97706" strokeWidth="1.5" strokeOpacity="0.5" />
+        
+        {/* Analog gauge on the left */}
+        <circle cx="50" cy="115" r="18" fill="none" stroke="#E5E7EB" strokeWidth="2.5" />
+        <circle cx="50" cy="115" r="18" fill="none" stroke="#D97706" strokeWidth="3.5" strokeDasharray="80 120" transform="rotate(-90 50 115)" />
+        <text x="50" y="119" fontSize="9.5" fontWeight="900" fontFamily="monospace" fill="#2A2522" textAnchor="middle">98%</text>
+        <text x="50" y="130" fontSize="5.5" fontWeight="700" fontFamily="monospace" fill="#5C5248" textAnchor="middle">CAPACITY</text>
+
+        {/* Digital numbers on the right */}
+        <g transform="translate(152, 115)" fontFamily="monospace">
+          <text x="0" y="0" fontSize="16.5" fontWeight="900" fill="#D97706">400.0</text>
+          <text x="50" y="0" fontSize="8.5" fontWeight="800" fill="#5C5248">MW</text>
+          <text x="0" y="10" fontSize="7" fontWeight="700" fill="#10B981">GRID: ACTIVE</text>
+        </g>
       </g>
     );
   }
 
   if (index === 1) {
-    // Levosulpiride: white round tablets
-    const whitePills = [
-      { cx: 60, cy: 288, r: 13, deg: -10 },
-      { cx: 88, cy: 291, r: 13, deg: 40 },
-      { cx: 115, cy: 284, r: 14, deg: -25 },
-      { cx: 145, cy: 290, r: 13, deg: 15 },
-      { cx: 178, cy: 287, r: 13, deg: -60 },
-      { cx: 130, cy: 278, r: 13, deg: 5 },
-    ];
     return (
       <g>
-        {whitePills.map((pill, i) => (
-          <g key={i} transform={`translate(${pill.cx}, ${pill.cy}) rotate(${pill.deg})`} filter={`url(#tablet-shadow-${id})`}>
-            <circle cx="0" cy="0" r={pill.r} fill={`url(#white-pill-grad-${id})`} />
-            <circle cx="0.5" cy="0.5" r={pill.r - 2} fill={`url(#white-pill-face-${id})`} />
-            <line x1={-pill.r + 3} y1="0" x2={pill.r - 3} y2="0" stroke="#71717a" strokeWidth="0.8" opacity="0.5" />
-            <line x1={-pill.r + 3} y1="0.6" x2={pill.r - 3} y2="0.6" stroke="#ffffff" strokeWidth="0.6" opacity="0.9" />
-          </g>
-        ))}
+        {/* Nodes and Flow Path */}
+        <defs>
+          <marker id={`arrow-${id}`} viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 2 L 8 5 L 0 8 z" fill="#D97706" />
+          </marker>
+        </defs>
+
+        {/* Stock Optimization / Supply Flow Lines */}
+        <path d="M 45 95 L 105 75" fill="none" stroke="#D97706" strokeWidth="1.5" strokeDasharray="3 3" markerEnd={`url(#arrow-${id})`} />
+        <path d="M 105 75 L 165 95" fill="none" stroke="#D97706" strokeWidth="1.5" strokeDasharray="3 3" markerEnd={`url(#arrow-${id})`} />
+        <path d="M 45 95 Q 105 125, 165 95" fill="none" stroke="#D97706" strokeWidth="1.2" strokeOpacity="0.4" />
+
+        {/* Node 1: Supply */}
+        <circle cx="45" cy="95" r="14" fill="#FFFFFF" fillOpacity="0.85" stroke="#D97706" strokeWidth="1.5" />
+        <path d="M 40 91 H 50 V 99 H 40 Z M 40 95 H 50 M 45 91 V 99" fill="none" stroke="#D97706" strokeWidth="1.2" />
+        <text x="45" y="121" fontSize="6.5" fontWeight="700" fontFamily="monospace" fill="#5C5248" textAnchor="middle">STOCKS</text>
+
+        {/* Node 2: Database / SAP System (Center High-point) */}
+        <circle cx="105" cy="75" r="16" fill="#FFFFFF" fillOpacity="0.85" stroke="#D97706" strokeWidth="2" />
+        <ellipse cx="105" cy="69" rx="7" ry="2.5" fill="none" stroke="#D97706" strokeWidth="1.2" />
+        <path d="M 98 69 V 79 Q 105 82, 112 79 V 69 M 98 74 Q 105 77, 112 74" fill="none" stroke="#D97706" strokeWidth="1.2" />
+        <text x="105" y="52" fontSize="6.5" fontFamily="monospace" fill="#D97706" textAnchor="middle" fontWeight="800">SAP MM</text>
+
+        {/* Node 3: Procurement / Delivery */}
+        <circle cx="165" cy="95" r="14" fill="#FFFFFF" fillOpacity="0.85" stroke="#D97706" strokeWidth="1.5" />
+        <path d="M 158 96 H 168 L 171 99 H 158 Z M 158 92 H 165 V 96 H 158 Z" fill="none" stroke="#D97706" strokeWidth="1.2" />
+        <circle cx="160.5" cy="100.5" r="1.5" fill="#D97706" />
+        <circle cx="167.5" cy="100.5" r="1.5" fill="#D97706" />
+        <text x="165" y="121" fontSize="6.5" fontWeight="700" fontFamily="monospace" fill="#5C5248" textAnchor="middle">LOGISTICS</text>
+
+        {/* System Bar chart at the bottom */}
+        <g transform="translate(70, 132)">
+          <rect x="0" y="0" width="100" height="6" rx="3" fill="#E5E7EB" />
+          <rect x="0" y="0" width="84" height="6" rx="3" fill="#D97706" />
+          <text x="50" y="-4" fontSize="6" fontWeight="800" fontFamily="monospace" fill="#2A2522" textAnchor="middle">EFFICIENCY: 84%</text>
+        </g>
       </g>
     );
   }
 
   if (index === 2) {
-    // Herbal Drug Study: green/yellow capsules
-    const capsules = [
-      { cx: 70, cy: 288, deg: -15 },
-      { cx: 105, cy: 292, deg: 8 },
-      { cx: 142, cy: 289, deg: -30 },
-      { cx: 176, cy: 285, deg: 25 },
-      { cx: 122, cy: 280, deg: 55 },
-    ];
     return (
       <g>
-        {capsules.map((cap, i) => (
-          <g key={i} transform={`translate(${cap.cx}, ${cap.cy}) rotate(${cap.deg})`} filter={`url(#tablet-shadow-${id})`}>
-            <path d="M 0,-7 L 10,-7 A 7,7 0 0,1 17,0 A 7,7 0 0,1 10,7 L 0,7 Z" fill={`url(#cap-yellow-${id})`} />
-            <path d="M 1,-7 L -10,-7 A 7,7 0 0,0 -17,0 A 7,7 0 0,0 -10,7 L 1,7 Z" fill={`url(#cap-green-${id})`} />
-            <line x1="1" y1="-7" x2="1" y2="7" stroke="#081c15" strokeWidth="0.8" opacity="0.4" />
-            <path d="M -11,-4 L 11,-4" fill="none" stroke="#ffffff" strokeWidth="1.3" strokeLinecap="round" opacity="0.55" />
-          </g>
+        {/* Sun in top left */}
+        <circle cx="45" cy="65" r="10" fill="none" stroke="#D97706" strokeWidth="1.5" />
+        {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+          <line
+            key={angle}
+            x1="45" y1="65" x2="45" y2="65"
+            stroke="#D97706" strokeWidth="1.2" strokeLinecap="round"
+            transform={`rotate(${angle} 45 65) translate(0 -16)`}
+          />
         ))}
+
+        {/* Solar Panel Array grids */}
+        <g transform="translate(30, 95)" stroke="#D97706" strokeWidth="1.2" fill="#FFFFFF" fillOpacity="0.5">
+          <polygon points="5,25 25,25 20,5 0,5" strokeOpacity="0.6" />
+          <polygon points="28,25 48,25 43,5 23,5" />
+          <polygon points="51,25 71,25 66,5 46,5" />
+          <line x1="25.5" y1="15" x2="45.5" y2="15" strokeOpacity="0.6" />
+          <line x1="33" y1="5" x2="38" y2="25" strokeOpacity="0.6" />
+        </g>
+
+        {/* Electrical Tower / Grid Station on the right */}
+        <g transform="translate(150, 75)" stroke="#D97706" strokeWidth="1.2" fill="none">
+          <path d="M 15 45 L 25 5 L 35 45 M 10 32 L 40 32 M 5 15 L 45 15 M 15 15 L 25 32 M 35 15 L 25 32" />
+          <line x1="5" y1="45" x2="45" y2="45" strokeOpacity="0.5" />
+          <text x="25" y="-6" fontSize="6.5" fontWeight="800" fontFamily="monospace" fill="#D97706" textAnchor="middle">ANANTAPUR AP</text>
+        </g>
+
+        {/* Power flow line */}
+        <path d="M 101 110 H 155" fill="none" stroke="#D97706" strokeWidth="1.5" strokeDasharray="4 2" />
+
+        {/* Power generation display */}
+        <g transform="translate(32, 138)" fontFamily="monospace" fontSize="8" fontWeight="800">
+          <text x="0" y="0" fill="#2A2522">OUTPUT: 100 MW</text>
+          <text x="110" y="0" fill="#10B981" textAnchor="start">GRID FEED: OK</text>
+        </g>
       </g>
     );
   }
@@ -184,13 +224,7 @@ function renderTablets(index: number, id: string) {
   return null;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
- *  REALISTIC PLASTIC ZIP-LOCK BAG — pure SVG
- *  The viewBox is ALWAYS 240×310 (design-locked).
- *  It scales to whatever pixel size the container gives it.
- * ═══════════════════════════════════════════════════════════════════ */
-
-function PlasticBag({
+function TelemetryCard({
   id,
   index,
   name,
@@ -202,24 +236,6 @@ function PlasticBag({
   const W = 240;
   const H = 310;
 
-  const bagPath = `
-    M 10 ${H - 8}
-    Q 10 ${H} 18 ${H}
-    L ${W - 18} ${H}
-    Q ${W - 10} ${H} ${W - 10} ${H - 8}
-    L ${W - 5} 46
-    Q ${W - 5} 41 ${W - 10} 41
-    L 10 41
-    Q 5 41 5 46
-    Z
-  `;
-
-  const zipY = 41;
-
-  // Sticker rotation per bag (organic look)
-  const rotationSeed = (name.charCodeAt(0) + index) % 3 - 1;
-  const stickerAngle = -1.2 + rotationSeed * 0.7;
-
   return (
     <svg
       viewBox={`0 0 ${W} ${H}`}
@@ -227,195 +243,114 @@ function PlasticBag({
       style={{ width: '100%', height: '100%', overflow: 'visible' }}
     >
       <defs>
-        {/* ── clear plastic body ── */}
-        <linearGradient id={`bg-${id}`} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%"   stopColor="white" stopOpacity="0.22" />
-          <stop offset="50%"  stopColor="white" stopOpacity="0.10" />
-          <stop offset="100%" stopColor="white" stopOpacity="0.26" />
-        </linearGradient>
-
-        {/* ── frosted gloss overlay ── */}
-        <linearGradient id={`gloss-${id}`} x1="0%" y1="0%" x2="60%" y2="100%">
-          <stop offset="0%"   stopColor="white" stopOpacity="0.65" />
-          <stop offset="40%"  stopColor="white" stopOpacity="0.18" />
-          <stop offset="100%" stopColor="white" stopOpacity="0.02" />
-        </linearGradient>
-
-        {/* ── specular streak ── */}
-        <linearGradient id={`spec-${id}`} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%"   stopColor="white" stopOpacity="0.0"  />
-          <stop offset="45%"  stopColor="white" stopOpacity="0.45" />
-          <stop offset="55%"  stopColor="white" stopOpacity="0.45" />
-          <stop offset="100%" stopColor="white" stopOpacity="0.0"  />
-        </linearGradient>
-
-        {/* ── bottom gusset shadow ── */}
-        <linearGradient id={`gusset-${id}`} x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%"   stopColor="#2A2522" stopOpacity="0.0"  />
-          <stop offset="100%" stopColor="#2A2522" stopOpacity="0.15" />
-        </linearGradient>
-
-        {/* ── zip seal gradient ── */}
-        <linearGradient id={`zip-${id}`} x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%"   stopColor="#F9FAFB" stopOpacity="0.95" />
-          <stop offset="40%"  stopColor="#E5E7EB" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="#D1D5DB" stopOpacity="0.95" />
-        </linearGradient>
-
-        <clipPath id={`clip-${id}`}>
-          <path d={bagPath} />
-        </clipPath>
-
-        {/* ── bag drop shadow ── */}
-        <filter id={`shadow-${id}`} x="-15%" y="-8%" width="130%" height="130%">
-          <feDropShadow dx="0" dy="12" stdDeviation="14" floodColor="#2A2522" floodOpacity="0.14" />
-          <feDropShadow dx="0" dy="4"  stdDeviation="5"  floodColor="#2A2522" floodOpacity="0.07" />
+        <filter id={`card-shadow-${id}`} x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="12" stdDeviation="15" floodColor="#2A2522" floodOpacity="0.08" />
+          <feDropShadow dx="0" dy="3" stdDeviation="5" floodColor="#2A2522" floodOpacity="0.04" />
         </filter>
 
-        {/* ── sticker adhesive shadow ── */}
-        <filter id={`sticker-shadow-${id}`} x="-15%" y="-15%" width="130%" height="130%">
-          <feDropShadow dx="0" dy="2.5" stdDeviation="3" floodColor="#2A2522" floodOpacity="0.14" />
-          <feDropShadow dx="0" dy="0.8" stdDeviation="1" floodColor="#2A2522" floodOpacity="0.08" />
-        </filter>
-
-        {/* ── tablet drop shadow ── */}
-        <filter id={`tablet-shadow-${id}`} x="-30%" y="-30%" width="160%" height="160%">
-          <feDropShadow dx="1" dy="3.5" stdDeviation="2.5" floodColor="#1F1A17" floodOpacity="0.22" />
-        </filter>
-
-        {/* ── tablet gradients ── */}
-        <radialGradient id={`pink-pill-grad-${id}`} cx="30%" cy="30%" r="70%">
-          <stop offset="0%" stopColor="#ffccd5" />
-          <stop offset="70%" stopColor="#ff758f" />
-          <stop offset="100%" stopColor="#c9184a" />
-        </radialGradient>
-        <radialGradient id={`pink-pill-face-${id}`} cx="35%" cy="35%" r="65%">
-          <stop offset="0%" stopColor="#ffccd5" />
-          <stop offset="80%" stopColor="#ff8da1" />
-          <stop offset="100%" stopColor="#ff4d6d" />
-        </radialGradient>
-
-        <radialGradient id={`white-pill-grad-${id}`} cx="30%" cy="30%" r="70%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="75%" stopColor="#e4e4e7" />
-          <stop offset="100%" stopColor="#a1a1aa" />
-        </radialGradient>
-        <radialGradient id={`white-pill-face-${id}`} cx="35%" cy="35%" r="65%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="80%" stopColor="#f4f4f5" />
-          <stop offset="100%" stopColor="#d4d4d8" />
-        </radialGradient>
-
-        <linearGradient id={`cap-green-${id}`} x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#40916c" />
-          <stop offset="40%" stopColor="#1b4332" />
-          <stop offset="100%" stopColor="#081c15" />
+        <linearGradient id={`card-bg-${id}`} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.80" />
+          <stop offset="50%" stopColor="#FDFBF7" stopOpacity="0.45" />
+          <stop offset="100%" stopColor="#EADEC9" stopOpacity="0.55" />
         </linearGradient>
-        <linearGradient id={`cap-yellow-${id}`} x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#ffe3a8" />
-          <stop offset="45%" stopColor="#ffb703" />
-          <stop offset="100%" stopColor="#fb8500" />
+
+        <linearGradient id={`screen-bg-${id}`} x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.50" />
+          <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.15" />
         </linearGradient>
+        
+        <pattern id={`grid-pat-${id}`} width="12" height="12" patternUnits="userSpaceOnUse">
+          <path d="M 12 0 L 0 0 0 12" fill="none" stroke="#D97706" strokeWidth="0.5" strokeOpacity="0.05" />
+        </pattern>
       </defs>
 
-      {/* ── bag shadow ── */}
-      <path d={bagPath} filter={`url(#shadow-${id})`} fill="transparent" />
-
-      {/* ── transparent body ── */}
-      <path d={bagPath} fill={`url(#bg-${id})`} />
-
-      {/* ── realistic pills/tablets inside the bag ── */}
-      <g clipPath={`url(#clip-${id})`}>
-        {renderTablets(index, id)}
-      </g>
-
-      {/* ── crinkle wrinkle lines ── */}
-      <g clipPath={`url(#clip-${id})`} opacity="0.4">
-        <path d={`M 42 ${zipY+24} Q 80 ${zipY+85} 55 ${H-50}`}
-          fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" />
-        <path d={`M 145 ${zipY+14} Q 180 ${zipY+110} 150 ${H-70}`}
-          fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" />
-        <path d={`M 95 ${zipY+36} Q 108 ${zipY+140} 100 ${H-35}`}
-          fill="none" stroke="white" strokeWidth="1.3" strokeLinecap="round" />
-        {/* fold shadows */}
-        <path d={`M 39 ${zipY+26} Q 77 ${zipY+87} 52 ${H-48}`}
-          fill="none" stroke="rgba(42,37,34,0.06)" strokeWidth="1.8" strokeLinecap="round" />
-        <path d={`M 142 ${zipY+16} Q 177 ${zipY+112} 147 ${H-68}`}
-          fill="none" stroke="rgba(42,37,34,0.06)" strokeWidth="1.2" strokeLinecap="round" />
-        {/* bottom crinkle */}
-        <path d={`M 18 ${H-24} Q ${W/2} ${H-42} ${W-18} ${H-26}`}
-          fill="none" stroke="white" strokeWidth="2.4" strokeLinecap="round" opacity="0.5" />
-      </g>
-
-      {/* ── frosted gloss ── */}
-      <path d={bagPath} fill={`url(#gloss-${id})`} clipPath={`url(#clip-${id})`} />
-
-      {/* ── specular streak ── */}
-      <rect x="68" y={zipY+6} width="30" height={H-zipY-42} rx="15"
-        fill={`url(#spec-${id})`} clipPath={`url(#clip-${id})`}
-        transform="rotate(-8 120 160)" opacity="0.6" />
-
-      {/* ── bottom gusset ── */}
-      <rect x="5" y={H-55} width={W-10} height="55"
-        fill={`url(#gusset-${id})`} clipPath={`url(#clip-${id})`} />
-
-      {/* ── bag outline ── */}
-      <path d={bagPath} fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.4" />
-
-      {/* ── zip-lock strip ── */}
-      <rect x="5" y={zipY-17} width={W-10} height="17" rx="3.5"
-        fill={`url(#zip-${id})`} stroke="rgba(255,255,255,0.6)" strokeWidth="0.8" />
-      {[0, 4.5, 9].map((dy) => (
-        <rect key={dy} x="8" y={zipY-15+dy}
-          width={W-16} height="3" rx="1.5"
-          fill="white" opacity={dy === 4.5 ? 0.95 : 0.6} />
-      ))}
-
-      {/* ═══ REALISTIC WHITE STICKER ═══ */}
-      <g transform={`rotate(${stickerAngle} 120 155)`}>
-        {/* Sticker body */}
-        <rect x="28" y="100" width="184" height="115" rx="5"
-          fill="#FFFFFF" stroke="#E4E4E7" strokeWidth="0.9"
-          filter={`url(#sticker-shadow-${id})`} />
-
-        {/* Divider lines */}
-        <line x1="28" y1="117" x2="212" y2="117" stroke="#E4E4E7" strokeWidth="0.8" />
-        <line x1="28" y1="180" x2="212" y2="180" stroke="#F4F4F5" strokeWidth="0.8" />
-
-        {/* Header: FORMULATION RECORD */}
-        <text x="36" y="112" fontSize="7.5" fontWeight="700"
-          fontFamily="system-ui, sans-serif" fill="#0E8B7D" letterSpacing="0.7">
-          FORMULATION RECORD
+      {/* Main card body and border with glass shadow */}
+      <rect x="4" y="4" width="232" height="302" rx="14" fill={`url(#card-bg-${id})`} stroke="#FFFFFF" strokeWidth="1.5" strokeOpacity="0.8" filter={`url(#card-shadow-${id})`} />
+      <rect x="3.5" y="3.5" width="233" height="303" rx="14.5" fill="none" stroke="#D97706" strokeWidth="0.8" strokeOpacity="0.1" />
+      
+      {/* Card grid overlay */}
+      <rect x="5" y="5" width="230" height="300" rx="13" fill={`url(#grid-pat-${id})`} pointerEvents="none" />
+      
+      {/* ── HEADER ── */}
+      <g transform="translate(14, 16)">
+        <path d="M 0,4 H 10 M 5,0 V 8" stroke="#5C5248" strokeWidth="1.2" strokeOpacity="0.8" />
+        <circle cx="5" cy="4" r="3.5" fill="none" stroke="#5C5248" strokeWidth="1" strokeOpacity="0.8" />
+        
+        <text x="16" y="8" fontSize="7.5" fontWeight="800" fontFamily="monospace" fill="#5C5248" letterSpacing="1" opacity="0.85">
+          SYSTEM TELEMETRY
         </text>
-
-        {/* Batch code */}
-        <text x="204" y="112" textAnchor="end" fontSize="7.5" fontWeight="600"
-          fontFamily="monospace" fill="#71717A">
-          {`BATCH AR-0${index + 1}`}
+        
+        <circle cx="198" cy="4" r="3" fill="#10B981" />
+        <circle cx="198" cy="4" r="5" fill="none" stroke="#10B981" strokeWidth="1.2" opacity="0.6">
+          <animate attributeName="r" values="3;7;3" dur="2s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.8;0;0.8" dur="2s" repeatCount="indefinite" />
+        </circle>
+        
+        <text x="190" y="8" fontSize="6.5" fontWeight="700" fontFamily="monospace" fill="#10B981" textAnchor="end" letterSpacing="0.5">
+          ONLINE
         </text>
+      </g>
+      
+      <line x1="12" y1="32" x2="228" y2="32" stroke="#FFFFFF" strokeWidth="1" strokeOpacity="0.7" />
+      <line x1="12" y1="32.5" x2="228" y2="32.5" stroke="#D97706" strokeWidth="0.5" strokeOpacity="0.1" />
 
-        {/* Project Title */}
-        <text x="120" y="148" textAnchor="middle" fontSize="14" fontWeight="800"
-          fontFamily="system-ui, -apple-system, sans-serif" fill="#2A2522">
+      {/* ── GRAPHIC TELEMETRY SCREEN ── */}
+      <rect x="14" y="40" width="212" height="115" rx="8" fill={`url(#screen-bg-${id})`} stroke="#FFFFFF" strokeWidth="1.2" strokeOpacity="0.6" />
+      
+      <rect x="15" y="41" width="210" height="113" rx="7" fill={`url(#grid-pat-${id})`} fillOpacity="0.6" pointerEvents="none" />
+      
+      {renderTelemetryGraphic(index, id)}
+
+      {/* ── CARD RECORD INFO ── */}
+      <g transform="translate(14, 165)">
+        <rect x="0" y="0" width="212" height="130" rx="8" fill="#FFFFFF" fillOpacity="0.65" stroke="#FFFFFF" strokeWidth="1.2" strokeOpacity="0.8" />
+        
+        <text x="12" y="18" fontSize="7.5" fontWeight="700" fontFamily="monospace" fill="#5C5248" letterSpacing="0.8">
+          ASSET RECORD // AR-0{index + 1}
+        </text>
+        
+        <line x1="12" y1="24" x2="200" y2="24" stroke="#D97706" strokeWidth="0.8" strokeOpacity="0.15" />
+
+        <g transform="translate(12, 42)">
           {splitLabel(name).map((line, li, arr) => (
-            <tspan key={li} x="120" dy={li === 0 ? -(arr.length - 1) * 8 : 17}>
+            <text
+              key={li}
+              x="0"
+              y={li * 18}
+              fontSize="14.5"
+              fontWeight="800"
+              fontFamily="system-ui, -apple-system, sans-serif"
+              fill="#2A2522"
+            >
               {line}
-            </tspan>
-          ))}
-        </text>
-
-        {/* Barcode */}
-        <g opacity="0.75" transform="translate(36, 187)">
-          {[0, 3.5, 7, 11.5, 14.5, 18, 21, 25, 28, 32, 35.5, 39, 42.5, 46].map((bx, bi) => (
-            <rect key={bi} x={bx} y="0" width={bi % 3 === 0 ? 2.2 : 1} height="18" fill="#2A2522" />
+            </text>
           ))}
         </g>
 
-        {/* LOT */}
-        <text x="204" y="200" textAnchor="end" fontSize="7.5" fontWeight="500"
-          fontFamily="monospace" fill="#71717A" letterSpacing="0.3">
-          LOT 2026.06
-        </text>
+        <g transform="translate(12, 86)" fontSize="7" fontWeight="600" fontFamily="monospace" fill="#5C5248" letterSpacing="0.2">
+          {index === 0 && (
+            <>
+              <text x="0" y="0">TYPE: O&M MANAGEMENT / MONITORING</text>
+              <text x="0" y="9">INTEGRATION: REAL-TIME SCADA</text>
+              <text x="0" y="18">CAPACITY: 400 MW UTILITY GRID</text>
+            </>
+          )}
+          {index === 1 && (
+            <>
+              <text x="0" y="0">TYPE: MATERIALS MANAGEMENT / ERP</text>
+              <text x="0" y="9">INTEGRATION: SAP MM MODULE</text>
+              <text x="0" y="18">CORES: INVENTORY & STOCK OPTIMIZATION</text>
+            </>
+          )}
+          {index === 2 && (
+            <>
+              <text x="0" y="0">TYPE: UTILITY-SCALE SOLAR PV</text>
+              <text x="0" y="9">INTEGRATION: GRID TRANSMISSION</text>
+              <text x="0" y="18">LOCATION: ANANTAPUR, AP (INDIA)</text>
+            </>
+          )}
+        </g>
+
       </g>
     </svg>
   );
@@ -569,11 +504,11 @@ export default function WorkFinderSection() {
         {/* Heading — matches theme: bold uppercase + script subtitle */}
         <div className="wf-title text-center mb-10 md:mb-14">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tight" style={{ color: '#2A2522' }}>
-            ARHAM&apos;S
+            AHMED&apos;S
           </h2>
           <span
             className="text-2xl md:text-3xl lg:text-4xl -mt-1 block"
-            style={{ color: '#0E8B7D', fontFamily: "'Caveat', cursive" }}
+            style={{ color: '#D97706', fontFamily: "'Caveat', cursive" }}
           >
             projects
           </span>
@@ -603,7 +538,7 @@ export default function WorkFinderSection() {
               const uid = `bag-${i}`;
 
               const bag = (
-                <PlasticBag
+                <TelemetryCard
                   id={uid}
                   index={i}
                   name={project.name}

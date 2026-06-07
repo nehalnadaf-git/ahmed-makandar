@@ -81,9 +81,9 @@ export default function Navbar() {
           <button
             onClick={() => scrollTo('#')}
             className="text-lg md:text-xl font-extrabold tracking-tight"
-            style={{ color: '#0E8B7D', fontFamily: "'Inter', system-ui, sans-serif", background: 'none', border: 'none', cursor: 'pointer' }}
+            style={{ color: '#D97706', fontFamily: "'Inter', system-ui, sans-serif", background: 'none', border: 'none', cursor: 'pointer' }}
           >
-            AH
+            AR
           </button>
 
           {/* Desktop nav links */}
@@ -92,7 +92,7 @@ export default function Navbar() {
               <button
                 key={item.label}
                 onClick={() => scrollTo(item.href)}
-                className="text-[13px] font-medium cursor-pointer transition-colors duration-200 hover:text-[#0E8B7D]"
+                className="text-[13px] font-medium cursor-pointer transition-colors duration-200 hover:text-[#D97706]"
                 style={{ color: '#5A5550', fontFamily: "'Inter', system-ui, sans-serif", background: 'none', border: 'none' }}
               >
                 {item.label}
@@ -145,7 +145,7 @@ export default function Navbar() {
           ))}
           <div
             className="mt-4 w-12 h-0.5 rounded-full"
-            style={{ backgroundColor: '#0E8B7D' }}
+            style={{ backgroundColor: '#D97706' }}
           />
         </div>
       </div>

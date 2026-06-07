@@ -16,40 +16,40 @@ function LinkedInIcon({ className, style }: { className?: string; style?: React.
 
 const testimonials = [
   {
-    title: 'QA, GMP & R&D Internship',
-    body: 'Hands-on exposure to Good Manufacturing Practices (GMP) and pharmaceutical workflow at Shilpa Biologicals. Observed QA documentation and procedures. Gained R&D exposure. Learned basics of UV Spectroscopy and HPLC. Developed understanding of pharmaceutical manufacturing environment.',
-    author: 'SHILPA BIOLOGICALS',
-    role: 'Pharmaceutical Internship · 2025',
-    linkedin: 'https://www.linkedin.com/in/arham-hussain-936054259',
+    title: 'Lead Engineer – Solar O&M',
+    body: 'Managed end-to-end SCADA monitoring of a 400 MW solar power plant covering 0.6/33 kV & 11/66 kV systems. Operated 33 kV & 66 kV switchgear (16 bays). Led field teams for AC and DC breakdowns. Prepared Daily Generation Reports, performed energy forecasting and plant PR/PLF analysis.',
+    author: 'TATA POWER RENEWABLE ENERGY',
+    role: '400 MW RE Park, Pavagada, Karnataka · Sept 2023 – April 2025',
+    linkedin: 'https://www.linkedin.com/in/ahmed-rehan-makandar-343106291/',
     paperBg: '#F5EEC0',
     paperType: 'holes',
     tapeColor: '#E8D8A8',
     tapeRotation: 2,
-    image: '/assets/pharma_internship_gmp.png',
+    image: '/assets/tata_power_solar.png',
   },
   {
-    title: 'International Conference Presentations',
-    body: 'Presented scientific posters at international conferences by KLE College of Pharmacy and RR College of Pharmacy. Received participation certificates. Presented seminars on Rosuvastatin and Levosulpiride validation using UV Spectrophotometry and HPLC techniques.',
-    author: 'KLE & RR COLLEGE OF PHARMACY',
-    role: 'Scientific Conferences · 2024–2025',
-    linkedin: 'https://www.linkedin.com/in/arham-hussain-936054259',
+    title: 'Solar Energy Basics – Certification',
+    body: 'Completed the Solar Energy Basics certification course on Coursera. Gained foundational knowledge of photovoltaic technology, solar plant design, energy yield assessment, and renewable energy fundamentals applicable to utility-scale solar O&M operations.',
+    author: 'COURSERA',
+    role: 'Solar Energy Basics · Certificate of Completion',
+    linkedin: 'https://www.linkedin.com/in/ahmed-rehan-makandar-343106291/',
     paperBg: '#F0E8D8',
     paperType: 'spiral',
     tapeColor: '#D8C8A8',
     tapeRotation: -2,
-    image: '/assets/conference_poster.png',
+    image: '/assets/coursera_cert.png',
   },
   {
-    title: 'B. Pharm & Research Excellence',
-    body: 'B. Pharm student at KLE College of Pharmacy, Hubballi (2022–2026). Certified in pharmaceutical sciences, data analysis, and communication skills. Proficient in UV Spectrophotometry, HPLC, GMP, and basic laboratory techniques. Multilingual: English, Hindi, Kannada, Urdu.',
-    author: 'KLE COLLEGE OF PHARMACY',
-    role: 'B. Pharm · Hubballi, Karnataka · 2022–2026',
-    linkedin: 'https://www.linkedin.com/in/arham-hussain-936054259',
+    title: 'Substation Maintenance Internship',
+    body: 'Internship at KPTCL 220 kV Sharavathi Receiving Station (SRS), Vidyuth Nagar, Hubli. Gained hands-on experience in HV substation maintenance, protection relay testing, transformer maintenance, and high-voltage switchgear operations in a live grid environment.',
+    author: 'KPTCL – 220 kV SHARAVATHI SRS',
+    role: 'Substation Maintenance · Feb 2023 – Jun 2023 · Hubli',
+    linkedin: 'https://www.linkedin.com/in/ahmed-rehan-makandar-343106291/',
     paperBg: '#F5D8D0',
     paperType: 'orange-spiral',
     tapeColor: '#E8C0B0',
     tapeRotation: 1,
-    image: '/assets/pharmacy_degree.png',
+    image: '/assets/kptcl_substation.png',
   },
 ];
 
@@ -95,7 +95,7 @@ function TestimonialCard({
           className="flex-shrink-0 flex flex-col items-center py-3"
           style={{
             width: '20px',
-            backgroundColor: t.paperType === 'holes' ? '#D4C97A' : t.paperType === 'spiral' ? '#3A3530' : '#0E8B7D',
+            backgroundColor: t.paperType === 'holes' ? '#D4C97A' : t.paperType === 'spiral' ? '#3A3530' : '#D97706',
           }}
         >
           {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((h) => (
@@ -317,11 +317,11 @@ export default function TestimonialsSection() {
         {/* Heading */}
         <div className="text-center mb-8 md:mb-14">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tight" style={{ color: '#2A2522' }}>
-            ACHIEVEMENTS &amp;
+            ACHIEVEMENTS &
           </h2>
           <span
             className="text-2xl md:text-3xl lg:text-4xl -mt-1 block"
-            style={{ color: '#0E8B7D', fontFamily: "'Caveat', cursive" }}
+            style={{ color: '#D97706', fontFamily: "'Caveat', cursive" }}
           >
             certifications
           </span>
@@ -373,7 +373,7 @@ export default function TestimonialsSection() {
                   width: activeSlide === i ? '24px' : '8px',
                   height: '8px',
                   borderRadius: '9999px',
-                  backgroundColor: activeSlide === i ? '#0E8B7D' : '#D5D0C8',
+                  backgroundColor: activeSlide === i ? '#D97706' : '#D5D0C8',
                   border: 'none',
                   padding: 0,
                   cursor: 'pointer',

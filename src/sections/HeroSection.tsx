@@ -9,18 +9,18 @@ import SwingingCardWrapper from '@/components/ui/SwingingCardWrapper';
  *  Module-level constants — defined once, never re-created
  * ═══════════════════════════════════════════════════════════════ */
 const TODO_ITEMS = [
-  { text: 'Rosuvastatin validation — UV & HPLC complete', done: true },
-  { text: 'Levosulpiride method development done', done: true },
-  { text: 'Shilpa Biologicals internship — completed', done: true },
-  { text: 'Herbal drug standardization — ongoing', done: false },
+  { text: 'SCADA monitoring — 400 MW plant live', done: true },
+  { text: 'SAP MM invoice processing — zero discrepancy', done: true },
+  { text: '100 MW Anantapur — O&M lead active', done: true },
+  { text: 'HV switchgear planned maintenance — ongoing', done: false },
 ];
 
-const WORK_FOLDERS = [
-  { label: 'Pharmacovig.' },
-  { label: 'UV / HPLC' },
-  { label: 'GMP & QA' },
-  { label: 'MS Office' },
-  { label: 'Lab Skills' },
+const WORK_CONSOLE_ITEMS = [
+  { label: 'SCADA & HV', status: '98% Eff', barWidth: '98%', color: '#D97706', type: 'scada' },
+  { label: 'SAP S4/HANA', status: 'Sync OK', barWidth: '100%', color: '#2563EB', type: 'sap' },
+  { label: 'Solar O&M', status: 'Optimal', barWidth: '96%', color: '#059669', type: 'solar' },
+  { label: 'MS Office', status: 'Ready', barWidth: '90%', color: '#4B5563', type: 'office' },
+  { label: 'HSE & Safety', status: 'Zero Inc.', barWidth: '100%', color: '#DC2626', type: 'hse' },
 ];
 
 /* ═══════════════════════════════════════════════════════════════
@@ -51,12 +51,12 @@ function TodoList({
           <div
             key={i}
             className={`${mobile ? 'w-2.5 h-2.5' : 'w-3 h-3'} rounded-full border-2`}
-            style={{ backgroundColor: '#FDFBF7', borderColor: '#0E8B7D', marginLeft: mobile ? '-5px' : '-6px' }}
+            style={{ backgroundColor: '#FDFBF7', borderColor: '#D97706', marginLeft: mobile ? '-5px' : '-6px' }}
           />
         ))}
       </div>
       <div className={`flex items-center gap-1.5 ${mobile ? 'mb-2' : 'mb-3'} ml-2`}>
-        <Sparkles className={`${mobile ? 'w-3 h-3' : 'w-3.5 h-3.5'}`} style={{ color: '#0E8B7D' }} />
+        <Sparkles className={`${mobile ? 'w-3 h-3' : 'w-3.5 h-3.5'}`} style={{ color: '#D97706' }} />
         <span className={`${mobile ? 'text-[10px]' : 'text-xs'} font-medium`} style={{ color: '#2A2522', fontFamily: "'Caveat', cursive" }}>
           My current to do list
         </span>
@@ -65,7 +65,7 @@ function TodoList({
         {TODO_ITEMS.map((item, i) => (
           <div key={i} className={`flex items-start gap-1.5 px-1 ${mobile ? 'py-0.5' : 'py-1'} rounded-md`}>
             {item.done ? (
-              <div className={`flex items-center justify-center ${mobile ? 'w-3.5 h-3.5' : 'w-4 h-4'} rounded-full mt-0.5`} style={{ backgroundColor: '#0E8B7D' }}>
+              <div className={`flex items-center justify-center ${mobile ? 'w-3.5 h-3.5' : 'w-4 h-4'} rounded-full mt-0.5`} style={{ backgroundColor: '#D97706' }}>
                 <Check className={`${mobile ? 'w-2 h-2' : 'w-2.5 h-2.5'} text-white`} />
               </div>
             ) : (
@@ -99,47 +99,51 @@ function FolderGrid({
   return (
     <div
       ref={folderRef}
-      className="relative rounded-xl overflow-hidden shadow-lg"
+      className="relative rounded-xl overflow-hidden shadow-lg border border-white/60 backdrop-blur-md"
       style={{
-        backgroundColor: '#FDFBF7',
+        backgroundColor: 'rgba(253, 251, 247, 0.65)',
         width: mobile ? '180px' : '220px',
-        boxShadow: '0 4px 20px rgba(42,37,34,0.08), 0 1px 4px rgba(42,37,34,0.04)',
+        boxShadow: '0 8px 32px 0 rgba(42,37,34,0.06), 0 1px 4px rgba(42,37,34,0.02)',
         opacity: folderRef ? 0 : undefined,
       }}
     >
-      <div className={`flex items-center gap-1.5 ${mobile ? 'px-2.5 py-1.5' : 'px-3 py-2'}`} style={{ backgroundColor: '#E8E4DE' }}>
-        <div className="flex gap-1">
-          <div className={`${mobile ? 'w-2 h-2' : 'w-2.5 h-2.5'} rounded-full`} style={{ backgroundColor: '#FF5F57' }} />
-          <div className={`${mobile ? 'w-2 h-2' : 'w-2.5 h-2.5'} rounded-full`} style={{ backgroundColor: '#FFBD2E' }} />
-          <div className={`${mobile ? 'w-2 h-2' : 'w-2.5 h-2.5'} rounded-full`} style={{ backgroundColor: '#28C840' }} />
-        </div>
-        <span className={`${mobile ? 'text-[9px]' : 'text-xs'} mx-auto ${mobile ? 'pr-6' : 'pr-10'}`} style={{ color: '#6B6560' }}>
-          arham&apos;s work
-        </span>
-      </div>
-      <div className={mobile ? 'p-2.5' : 'p-3'}>
-        <div className={`flex items-center gap-1 ${mobile ? 'mb-1.5' : 'mb-2'}`}>
-          <Smile className={`${mobile ? 'w-2.5 h-2.5' : 'w-3 h-3'}`} style={{ color: '#0E8B7D' }} />
-          <span className={mobile ? 'text-[9px]' : 'text-xs'} style={{ color: '#2A2522', fontFamily: "'Caveat', cursive" }}>
-            What do I work on?
+      {/* Header */}
+      <div className={`flex items-center justify-between ${mobile ? 'px-2 py-1' : 'px-3 py-1.5'}`} style={{ backgroundColor: 'rgba(232, 228, 222, 0.4)', borderBottom: '1px solid rgba(255,255,255,0.4)' }}>
+        <div className="flex items-center gap-1">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+          </span>
+          <span className={`${mobile ? 'text-[7px]' : 'text-[8px]'} font-bold tracking-wider font-mono`} style={{ color: '#047857' }}>
+            O&amp;M MON
           </span>
         </div>
-        <div className={`grid grid-cols-3 ${mobile ? 'gap-1.5' : 'gap-2'}`}>
-          {WORK_FOLDERS.map((folder, i) => {
-            const gradId = `folderGrad-${mobile ? 'm' : 'd'}-${i}`;
+        <span className={`${mobile ? 'text-[8px]' : 'text-[9px]'} font-mono uppercase tracking-wider font-bold`} style={{ color: '#6B6560' }}>
+          SKILLS
+        </span>
+      </div>
+
+      {/* Main Grid Body */}
+      <div className={mobile ? 'p-1.5' : 'p-2'}>
+        <div className={`grid grid-cols-2 ${mobile ? 'gap-1' : 'gap-1.5'}`}>
+          {WORK_CONSOLE_ITEMS.map((item, i) => {
+            const isLast = i === WORK_CONSOLE_ITEMS.length - 1;
             return (
-              <div key={i} className="flex flex-col items-center gap-0.5">
-                <svg width={mobile ? '28' : '36'} height={mobile ? '24' : '32'} viewBox="0 0 36 32" fill="none">
-                  <defs>
-                    <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="32" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stopColor="#7DD3FC" />
-                      <stop offset="100%" stopColor="#5BBCFF" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M4 4C4 1.79 5.79 0 8 0H14L18 4H32C34.21 4 36 5.79 36 8V28C36 30.21 34.21 32 32 32H4C1.79 32 0 30.21 0 28V8C0 5.79 1.79 4 4 4Z" fill={`url(#${gradId})`} />
-                </svg>
-                <span className={`${mobile ? 'text-[8px]' : 'text-[10px]'} text-center leading-tight`} style={{ color: '#6B6560' }}>
-                  {folder.label}
+              <div 
+                key={i} 
+                className={`flex items-center justify-between ${mobile ? 'p-1 px-1.5' : 'p-1.5 px-2'} rounded-md border border-white/50 transition-all duration-200 hover:bg-white/50 ${isLast ? 'col-span-2' : ''}`}
+                style={{ backgroundColor: 'rgba(255, 255, 255, 0.25)' }}
+              >
+                <div className="flex items-center gap-1">
+                  <span className="relative flex h-1 w-1">
+                    <span className="relative inline-flex rounded-full h-1 w-1" style={{ backgroundColor: item.color }} />
+                  </span>
+                  <span className={`${mobile ? 'text-[8px]' : 'text-[9.5px]'} font-semibold truncate`} style={{ color: '#2A2522', maxWidth: mobile ? '52px' : '68px' }}>
+                    {item.label}
+                  </span>
+                </div>
+                <span className={`${mobile ? 'text-[7px]' : 'text-[8.5px]'} font-mono px-0.5 rounded-sm bg-white/40`} style={{ color: '#4B5563' }}>
+                  {item.status}
                 </span>
               </div>
             );
@@ -183,7 +187,7 @@ function LocationStamp({
           <path d="M1 4C3 2 5 6 8 4C11 2 13 6 15 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       </div>
-      <div className="relative rounded-sm overflow-visible" style={{ backgroundColor: '#4A7C6F', padding: mobile ? '5px' : '6px' }}>
+      <div className="relative rounded-sm overflow-visible" style={{ backgroundColor: '#92400E', padding: mobile ? '5px' : '6px' }}>
         {/* Perforated edges */}
         <div className={`absolute ${mobile ? '-top-[3px] left-1.5 right-1.5' : '-top-[4px] left-2 right-2'} flex justify-between`}>
           {Array.from({ length: mobile ? 10 : 12 }).map((_, i) => (
@@ -216,22 +220,22 @@ function LocationStamp({
           </div>
           <div className={`flex justify-center ${mobile ? 'mb-2' : 'mb-3'}`}>
             <svg width={mobile ? '40' : '50'} height={mobile ? '32' : '40'} viewBox="0 0 50 40" fill="none">
-              <ellipse cx="25" cy="18" rx="8" ry="10" fill="#6AAF7F" transform="rotate(-15 25 18)" />
-              <ellipse cx="25" cy="18" rx="8" ry="10" fill="#5A9A6F" transform="rotate(15 25 18)" />
-              <ellipse cx="20" cy="20" rx="7" ry="9" fill="#7BC08F" transform="rotate(-30 20 20)" />
-              <ellipse cx="30" cy="20" rx="7" ry="9" fill="#7BC08F" transform="rotate(30 30 20)" />
-              <ellipse cx="25" cy="15" rx="6" ry="8" fill="#8DD4A0" />
+              <ellipse cx="25" cy="18" rx="8" ry="10" fill="#F59E0B" transform="rotate(-15 25 18)" />
+              <ellipse cx="25" cy="18" rx="8" ry="10" fill="#D97706" transform="rotate(15 25 18)" />
+              <ellipse cx="20" cy="20" rx="7" ry="9" fill="#FBBF24" transform="rotate(-30 20 20)" />
+              <ellipse cx="30" cy="20" rx="7" ry="9" fill="#FBBF24" transform="rotate(30 30 20)" />
+              <ellipse cx="25" cy="15" rx="6" ry="8" fill="#FDE68A" />
               <rect x="24" y="24" width="2.5" height="12" rx="1" fill="rgba(255,255,255,0.3)" />
               {!mobile && <ellipse cx="22" cy="30" rx="4" ry="2" fill="rgba(255,255,255,0.15)" transform="rotate(-20 22 30)" />}
               {!mobile && <ellipse cx="28" cy="32" rx="4" ry="2" fill="rgba(255,255,255,0.15)" transform="rotate(20 28 32)" />}
             </svg>
           </div>
-          <p className={mobile ? 'text-[9px]' : 'text-[11px]'} style={{ color: 'rgba(255,255,255,0.7)' }}>Karnataka</p>
+          <p className={mobile ? 'text-[9px]' : 'text-[11px]'} style={{ color: 'rgba(255,255,255,0.7)' }}>Andhra Pradesh</p>
           <p
             className={`${mobile ? 'text-base' : 'text-xl'} font-bold`}
             style={{ color: '#FFFFFF', lineHeight: 1.2, fontFamily: "'Inter', sans-serif", textShadow: '0 1px 2px rgba(0,0,0,0.15)' }}
           >
-            Hubballi
+            Anantapur
           </p>
         </div>
       </div>
@@ -257,11 +261,11 @@ function StickyNote({
       <div className="absolute inset-0 rounded-lg" style={{ backgroundColor: '#F0E8D0', transform: 'rotate(-1deg) translate(-1px, 1px)', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }} />
       <div className={`relative rounded-lg ${mobile ? 'p-3' : 'p-4'} note-curl`} style={{ backgroundColor: '#F5F0D0', boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }}>
         <div className={`flex items-center gap-1 ${mobile ? 'mb-1.5' : 'mb-2'}`}>
-          <span className={mobile ? 'text-[10px]' : 'text-xs'} style={{ color: '#2A2522', fontFamily: "'Caveat', cursive" }}>Internship</span>
-          <Lightbulb className={`${mobile ? 'w-3 h-3' : 'w-3.5 h-3.5'}`} style={{ color: '#0E8B7D' }} />
+          <span className={mobile ? 'text-[10px]' : 'text-xs'} style={{ color: '#2A2522', fontFamily: "'Caveat', cursive" }}>Experience</span>
+          <Lightbulb className={`${mobile ? 'w-3 h-3' : 'w-3.5 h-3.5'}`} style={{ color: '#D97706' }} />
         </div>
-        <p className={`${mobile ? 'text-xl' : 'text-2xl'} font-bold mb-0.5`} style={{ color: '#0E8B7D', fontFamily: "'Caveat', cursive" }}>Pharma</p>
-        <p className={`${mobile ? 'text-[9px]' : 'text-xs'} leading-relaxed`} style={{ color: '#6B6560' }}>QA Intern · Shilpa Biologicals<br />GMP &amp; R&amp;D · 2025</p>
+        <p className={`${mobile ? 'text-xl' : 'text-2xl'} font-bold mb-0.5`} style={{ color: '#D97706', fontFamily: "'Caveat', cursive" }}>Solar</p>
+        <p className={`${mobile ? 'text-[9px]' : 'text-xs'} leading-relaxed`} style={{ color: '#6B6560' }}>Lead Engineer · TATA Power<br />Renewable Energy · 2023–</p>
       </div>
     </div>
   );
@@ -330,26 +334,26 @@ function IDCardBadge({
         {/* Inner card face */}
         <div style={{ borderRadius: mobile ? '8px' : '10px', overflow: 'hidden', background: '#FDFBF7', boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.06)' }}>
           <div className="relative overflow-hidden" style={{ height: `${photoH}px` }}>
-            <img src="/assets/arham.webp" alt="Arham Hussain - B. Pharm & Aspiring Pharmacovigilance Professional" className="w-full h-full object-cover scale-125" />
+            <img src="/assets/ahmed.webp" alt="Ahmed Rehan Makandar - Lead Engineer Solar O&M" className="w-full h-full object-cover scale-110 translate-y-6" />
             <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: 'inset 0 -30px 50px rgba(0,0,0,0.08)' }} />
             <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%)' }} />
           </div>
 
           <div className={`text-center ${mobile ? 'py-4 px-3' : 'py-5 px-4'}`} style={{ backgroundColor: '#FDFBF7', borderTop: '1px solid rgba(0,0,0,0.04)' }}>
             <div style={{ padding: mobile ? '12px 16px 10px' : '16px 20px 14px' }}>
-              <h1 className={`${mobile ? 'text-4xl' : 'text-5xl'} font-bold mb-1`} style={{ color: '#0E8B7D', fontFamily: "'Kalam', cursive", lineHeight: 1.1 }}>Arham</h1>
-              <p className={`${mobile ? 'text-[10px] tracking-[2px]' : 'text-xs tracking-[3px]'} uppercase font-semibold`} style={{ color: '#6B6560' }}>B.Pharm</p>
+              <h1 className={`${mobile ? 'text-4xl' : 'text-5xl'} font-bold mb-1`} style={{ color: '#D97706', fontFamily: "'Kalam', cursive", lineHeight: 1.1 }}>Ahmed</h1>
+              <p className={`${mobile ? 'text-[10px] tracking-[2px]' : 'text-xs tracking-[3px]'} uppercase font-semibold`} style={{ color: '#6B6560' }}>Lead Engineer</p>
             </div>
           </div>
 
           {!mobile && (
             <div className="flex justify-center pb-5" style={{ backgroundColor: '#FDFBF7' }}>
               <a
-                href="https://drive.google.com/file/d/1qjujK3cI2dyhuFEdDUx90h0V5GeATS53/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1R3HS36-nOI826u83K69_3wSqGuw53O00/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border-2 text-xs uppercase tracking-wider font-semibold transition-all duration-200"
-                style={{ borderColor: '#0E8B7D', color: '#0E8B7D' }}
+                style={{ borderColor: '#D97706', color: '#D97706' }}
               >
                 Resume <Download className="w-3.5 h-3.5" />
               </a>
@@ -492,7 +496,7 @@ export default function HeroSection() {
   return (
     <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center pt-20 pb-8 md:pt-16 md:pb-20" style={{ overflow: 'clip' }}>
       {/* Radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(232,115,46,0.10) 0%, rgba(232,115,46,0.04) 40%, transparent 70%)' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(217,119,6,0.12) 0%, rgba(217,119,6,0.05) 40%, transparent 70%)' }} />
 
       {/* ═══════════════════════════════════════════════
        *  MOBILE LAYOUT
@@ -519,11 +523,11 @@ export default function HeroSection() {
           </div>
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-[20]">
             <a
-              href="https://drive.google.com/file/d/1qjujK3cI2dyhuFEdDUx90h0V5GeATS53/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1R3HS36-nOI826u83K69_3wSqGuw53O00/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2 rounded-lg border-2 text-[10px] uppercase tracking-wider font-semibold transition-all duration-200"
-              style={{ borderColor: '#0E8B7D', color: '#0E8B7D', backgroundColor: '#FDFBF7' }}
+              style={{ borderColor: '#D97706', color: '#D97706', backgroundColor: '#FDFBF7' }}
             >
               Resume <Download className="w-3 h-3" />
             </a>

@@ -2,10 +2,10 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Arham Hussain — B. Pharm & Pharmacovigilance',
-    short_name: 'Arham',
+    name: 'Ahmed Rehan Makandar — Solar O&M Engineer',
+    short_name: 'Ahmed Rehan',
     description:
-      'Portfolio of Arham Hussain — B. Pharm student at KLE College of Pharmacy, Hubballi, aspiring pharmacovigilance professional.',
+      'Portfolio of Ahmed Rehan Makandar — Lead Engineer Solar O&M at TATA Power Renewable Energy, Anantapur.',
     start_url: '/',
     display: 'standalone',
     background_color: '#F0EBE3',

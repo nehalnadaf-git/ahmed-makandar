@@ -11,40 +11,40 @@ gsap.registerPlugin(ScrollTrigger);
  * ───────────────────────────────────────────────────────── */
 const notes = [
   {
-    title: 'Method Dev.\n& Research.',
-    body: 'Developing **UV Spectrophotometry** and **HPLC** methods for pharmaceutical analysis. **ICH Q2(R1)** validation guidelines, **spectral analysis**, and **analytical instrument** operation for drug testing.',
+    title: 'SCADA & HV\nOperations.',
+    body: 'Monitoring a **400 MW solar plant** covering **0.6/33 kV & 11/66 kV** systems. Operated **33 kV & 66 kV switchgear** (16 bays) via **manual and remote SCADA**. Prepared **Daily Generation Reports**, performed **energy forecasting**, and analysed plant **PR, PLF, Inverter PR & Yield**.',
     bg: '#D8F0E8',
-    titleColor: '#4A7C6F',
+    titleColor: '#B45309',
     rotation: -2,
     animationClass: 'animate-note-float-1',
-    image: '/assets/uv_spectro.webp',
+    image: '/assets/solar_scada.png',
   },
   {
-    title: 'Lab Analysis\n& Validation.',
-    body: '**Rosuvastatin** & **Levosulpiride** validation per **ICH guidelines**. **Linearity**, **precision**, **accuracy** & **robustness** testing using UV Spectrophotometry and **RP-HPLC** method development.',
+    title: 'SAP S4/HANA &\nSupply Chain.',
+    body: '**SAP MM & PM modules** — GRN processing, material returns, bin-card records, **Opex & Capex planning**. Maintained **98%+ inventory accuracy**. Managed **P2P cycle**, vendor relationships, monthly invoice processing with **zero discrepancy**, and FIFO stock rotation.',
     bg: '#D8EBF5',
     titleColor: '#5F7B8B',
     rotation: 1,
     animationClass: 'animate-note-float-2',
-    image: '/assets/hplc_analysis.webp',
+    image: '/assets/sap_operations.png',
   },
   {
-    title: 'Quality\nAssurance.',
-    body: 'Observed **GMP** documentation and **QA procedures** at Shilpa Biologicals. **SOP** adherence, **regulatory compliance**, and **analytical instrument** operation in pharmaceutical manufacturing environment.',
+    title: 'Electrical Testing\n& Diagnostics.',
+    body: 'Hands-on testing using **PV Analyser**, **Thermography**, **EL Testing**, **Fault Locator**, **Hi-pot**, **IR Testing**, **Megger** and **BDV Kit**. Performed **Battery Drain Test**, Internal Resistance Test, and Annual Testing of **Protective Relays** and Power Transformers.',
     bg: '#E0F0E0',
     titleColor: '#5A8B6B',
     rotation: -1,
     animationClass: 'animate-note-float-3',
-    image: '/assets/gmp_quality.webp',
+    image: '/assets/electrical_testing.png',
   },
   {
-    title: 'Drug Safety\n& Pharma.',
-    body: '**Adverse Drug Reaction** monitoring and **patient safety** awareness. **Pharmacovigilance** principles, **regulatory reporting** pathways, and **clinical safety** data management in the pharmaceutical industry.',
+    title: 'HSE Compliance\n& Safety.',
+    body: '**LOTO & PPE** compliance enforcement, **Near Miss Reports**, Weekly HSE Reports, Monthly Tool Inspections, and **Road Safety** records. Scheduled safety training for team members. Supervised sub-vendor works including **module tilting**, cleaning, and grass cutting.',
     bg: '#E8F0D8',
     titleColor: '#6B8B5F',
     rotation: 2,
     animationClass: 'animate-note-float-4',
-    image: '/assets/drug_safety_pharmavig.png',
+    image: '/assets/hse_safety.png',
   },
 ];
 
@@ -96,9 +96,9 @@ export default function StatsSection() {
         start: 'top 70%',
         onEnter: () => {
           gsap.to(proxy, {
-            cgpa: 3,
+            cgpa: 2,
             projects: 2,
-            certifications: 4,
+            certifications: 2,
             duration: 1.6,
             ease: 'power3.out',
             stagger: 0.25,
@@ -166,7 +166,7 @@ export default function StatsSection() {
                 }}
               />
               {mark % 5 === 0 && (
-                <span className="text-[6px] mt-0.5" style={{ color: '#0E8B7D' }}>{mark}</span>
+                <span className="text-[6px] mt-0.5" style={{ color: '#D97706' }}>{mark}</span>
               )}
             </div>
           ))}
@@ -184,7 +184,7 @@ export default function StatsSection() {
                 }}
               />
               {mark % 5 === 0 && (
-                <span className="text-[6px] ml-0.5" style={{ color: '#0E8B7D' }}>{mark}</span>
+                <span className="text-[6px] ml-0.5" style={{ color: '#D97706' }}>{mark}</span>
               )}
             </div>
           ))}
@@ -195,7 +195,7 @@ export default function StatsSection() {
           className="absolute top-3 right-3 md:top-4 md:right-5 px-3 py-1.5 rounded-md rotate-3 z-20"
           style={{ backgroundColor: '#F5F0D0', boxShadow: '0 2px 6px rgba(0,0,0,0.08)' }}
         >
-          <span className="text-xs font-bold" style={{ color: '#0E8B7D' }}>Wip</span>
+          <span className="text-xs font-bold" style={{ color: '#D97706' }}>Wip</span>
         </div>
 
         {/* ══════════════════════════════════════
@@ -208,11 +208,11 @@ export default function StatsSection() {
               Built for
             </h2>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-1" style={{ color: '#2A2522' }}>
-              IMPACT &amp;
+              IMPACT &
             </h2>
             <span
               className="text-2xl md:text-3xl lg:text-4xl inline-block -rotate-2"
-              style={{ color: '#0E8B7D', fontFamily: "'Caveat', cursive" }}
+              style={{ color: '#D97706', fontFamily: "'Caveat', cursive" }}
             >
               driven by data.
             </span>
@@ -228,8 +228,8 @@ export default function StatsSection() {
                 </span>
                 <span className="text-[14px] md:text-2xl font-bold" style={{ color: '#2A2522' }}>+</span>
               </div>
-              <p className="text-[8px] sm:text-[10px] md:text-xs uppercase tracking-widest mt-1.5 mb-0.5 font-medium" style={{ color: '#6B6560' }}>Research Projects</p>
-              <p className="text-[8px] sm:text-[10px] md:text-xs" style={{ color: '#A09A94' }}>Method Dev. & Validation</p>
+              <p className="text-[8px] sm:text-[10px] md:text-xs uppercase tracking-widest mt-1.5 mb-0.5 font-medium" style={{ color: '#6B6560' }}>Plants Managed</p>
+              <p className="text-[8px] sm:text-[10px] md:text-xs" style={{ color: '#A09A94' }}>100 MW & 400 MW Utility-Scale</p>
             </div>
 
             {/* ML Projects */}
@@ -240,8 +240,8 @@ export default function StatsSection() {
                 </span>
                 <span className="text-[14px] md:text-2xl font-bold" style={{ color: '#2A2522' }}>+</span>
               </div>
-              <p className="text-[8px] sm:text-[10px] md:text-xs uppercase tracking-widest mt-1.5 mb-0.5 font-medium" style={{ color: '#6B6560' }}>Conferences</p>
-              <p className="text-[8px] sm:text-[10px] md:text-xs max-w-[80px] md:max-w-none mx-auto leading-tight" style={{ color: '#A09A94' }}>Scientific posters</p>
+              <p className="text-[8px] sm:text-[10px] md:text-xs uppercase tracking-widest mt-1.5 mb-0.5 font-medium" style={{ color: '#6B6560' }}>Years Experience</p>
+              <p className="text-[8px] sm:text-[10px] md:text-xs max-w-[80px] md:max-w-none mx-auto leading-tight" style={{ color: '#A09A94' }}>Solar O&M & Renewable Energy</p>
             </div>
 
             {/* Certifications */}
@@ -253,7 +253,7 @@ export default function StatsSection() {
                 <span className="text-[14px] md:text-2xl font-bold" style={{ color: '#2A2522' }}>+</span>
               </div>
               <p className="text-[8px] sm:text-[10px] md:text-xs uppercase tracking-widest mt-1.5 mb-0.5 font-medium" style={{ color: '#6B6560' }}>Certifications</p>
-              <p className="text-[8px] sm:text-[10px] md:text-xs max-w-[80px] md:max-w-none mx-auto leading-tight" style={{ color: '#A09A94' }}>GMP, HPLC &amp; Soft Skills</p>
+              <p className="text-[8px] sm:text-[10px] md:text-xs max-w-[80px] md:max-w-none mx-auto leading-tight" style={{ color: '#A09A94' }}>Solar Energy & KPTCL Internship</p>
             </div>
           </div>
         </div>

@@ -25,9 +25,9 @@ const kalam = Kalam({
 });
 
 export const metadata: Metadata = {
-  title: 'Arham Hussain — B. Pharm & Aspiring Pharmacovigilance Professional',
+  title: 'Ahmed Rehan Makandar — Lead Engineer, Solar O&M | Renewable Energy Professional',
   description:
-    'Portfolio of Arham Hussain — B. Pharm student at KLE College of Pharmacy, Hubballi. Aspiring pharmacovigilance professional with expertise in UV Spectroscopy, HPLC, and pharmaceutical quality assurance.',
+    'Portfolio of Ahmed Rehan Makandar — Lead Engineer Solar O&M at TATA Power Renewable Energy. 2.7+ years of experience in solar plant operations, SCADA monitoring, HV switchgear, SAP S4/HANA, and supply chain management across 100 MW & 400 MW utility-scale solar installations.',
   icons: {
     icon: [
       { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
   appleWebApp: {
     capable: true,
-    title: 'Arham',
+    title: 'Ahmed',
     statusBarStyle: 'default',
   },
 };

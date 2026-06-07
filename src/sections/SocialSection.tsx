@@ -8,9 +8,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const socialLinks = [
-  { name: 'LINKEDIN', color: '#0A66C2', url: 'https://www.linkedin.com/in/arham-hussain-936054259' },
-  { name: 'WHATSAPP', color: '#25D366', url: 'https://wa.me/918762101869' },
-  { name: 'GMAIL', color: '#EA4335', url: 'mailto:mrarham469@gmail.com' },
+  { name: 'LINKEDIN', color: '#0A66C2', url: 'https://www.linkedin.com/in/ahmed-rehan-makandar-343106291/' },
+  { name: 'WHATSAPP', color: '#25D366', url: 'https://wa.me/918951719186' },
+  { name: 'GMAIL', color: '#EA4335', url: 'mailto:ahmedrehanmakandar@gmail.com' },
 ];
 
 function CircularTextButton({ onClick, small = false }: { onClick: () => void; small?: boolean }) {
@@ -52,7 +52,7 @@ function CircularTextButton({ onClick, small = false }: { onClick: () => void; s
         className={`relative z-10 ${arrowBox} rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110`}
         style={{ backgroundColor: '#F0EBE3' }}
       >
-        <ArrowUp className={arrowIcon} style={{ color: '#0E8B7D' }} />
+        <ArrowUp className={arrowIcon} style={{ color: '#D97706' }} />
       </div>
     </button>
   );
@@ -122,7 +122,7 @@ export default function SocialSection({ onGoToTop }: SocialSectionProps) {
         <div ref={headingRef}>
           <span
             className="text-2xl block mb-4"
-            style={{ color: '#0E8B7D', fontFamily: "'Caveat', cursive" }}
+            style={{ color: '#D97706', fontFamily: "'Caveat', cursive" }}
           >
             Thanks for visiting!
           </span>
