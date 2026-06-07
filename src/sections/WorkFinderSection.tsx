@@ -414,62 +414,68 @@ export default function WorkFinderSection() {
       /* ── Title entrance: smooth fade + slide ── */
       gsap.from('.wf-title', {
         opacity: 0,
-        y: 40,
-        duration: isMobile ? 0.7 : 1,
-        ease: 'power3.out',
+        y: 30,
+        duration: isMobile ? 0.6 : 0.8,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: sectionRef.current!,
-          start: isMobile ? 'top 92%' : 'top 85%',
+          start: isMobile ? 'top 90%' : 'top 85%',
           toggleActions: 'play none none none',
         },
       });
 
       if (isMobile) {
-        /* ── Mobile: clean, snappy staggered entrance ── */
-        gsap.from('.wf-bag', {
-          opacity: 0,
-          y: 80,
-          scale: 0.6,
-          duration: 0.7,
-          stagger: { from: 'center', amount: 0.35 },
-          ease: 'power2.out',
-          clearProps: 'transform',
+        /* ── Mobile: premium staggered slide + pop ── */
+        gsap.fromTo(
+          '.wf-bag',
+          {
+            opacity: 0,
+            y: 90,
+            scale: 0.65,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.85,
+            stagger: { from: 'center', amount: 0.25 },
+            ease: 'back.out(1.1)',
+            force3D: true,
+            clearProps: 'opacity,y',
+            scrollTrigger: {
+              trigger: sectionRef.current!,
+              start: 'top 78%', // triggers when more of the section is visible
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      } else {
+        /* ── Desktop: unified scroll timeline (perfectly synchronized scrub) ── */
+        const tl = gsap.timeline({
           scrollTrigger: {
             trigger: sectionRef.current!,
-            start: 'top 90%',
-            toggleActions: 'play none none none',
+            start: 'top 82%',
+            end: 'top 35%',
+            scrub: 1.2, // buttery smooth follow scroll inertia
           },
         });
-      } else {
-        /* ── Desktop: scrub-linked scroll animation (buttery smooth) ── */
-        const bags = gsap.utils.toArray<HTMLElement>('.wf-bag');
-        const centerIdx = Math.floor(bags.length / 2);
 
-        bags.forEach((bag, i) => {
-          const distFromCenter = Math.abs(i - centerIdx);
-          const delayOffset = distFromCenter * 0.08;
-
-          gsap.fromTo(
-            bag,
-            {
-              opacity: 0,
-              y: 100 + distFromCenter * 20,
-              scale: 0.4,
-            },
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: sectionRef.current!,
-                start: `top ${82 - delayOffset * 100}%`,
-                end: 'top 45%',
-                scrub: 0.8,
-              },
-            }
-          );
-        });
+        tl.fromTo(
+          '.wf-bag',
+          {
+            opacity: 0,
+            y: 120,
+            scale: 0.5,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            stagger: { from: 'center', amount: 0.18 },
+            ease: 'power2.out',
+            force3D: true,
+          }
+        );
       }
     }, sectionRef);
 
