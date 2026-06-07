@@ -270,7 +270,15 @@ export default function StatsSection() {
          *  BOTTOM HALF — Process Cards
          * ══════════════════════════════════════ */}
         <div className="pl-10 pr-5 pt-8 pb-8 md:px-12 md:pt-10 md:pb-12 md:ml-4">
-
+          {/* Subheading */}
+          <div className="mb-8 md:mb-12 text-center">
+            <span 
+              className="text-2xl md:text-3xl lg:text-4xl inline-block -rotate-1"
+              style={{ color: '#D97706', fontFamily: "'Caveat', cursive" }}
+            >
+              Core Professional Competencies
+            </span>
+          </div>
 
           {/* Cards grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
